@@ -1,5 +1,5 @@
-import 'package:cook_book_app/styles/app_colors.dart';
-import 'package:cook_book_app/styles/app_typography.dart';
+import 'package:cook_book_app/Ui/styles/app_colors.dart';
+import 'package:cook_book_app/Ui/styles/app_typography.dart';
 import 'package:flutter/material.dart';
 
 class AppThemes {
