@@ -1,7 +1,7 @@
 import 'package:cook_book_app/Domain/interfaces/i_recipe_service.dart';
-import 'package:cook_book_app/Domain/services/fake_recipe_service.dart';
 import 'package:cook_book_app/Ui/components/name_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatelessWidget {
   IRecipeService service;
@@ -10,6 +10,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    var loc = AppLocalizations.of(context)!;
+
     var cards = service.getAll();
 
     return Scaffold(
@@ -28,7 +30,7 @@ class Home extends StatelessWidget {
                   children: [
                     const NameTitle('Rustem'),
                     Text(
-                      'What you want to cook today?',
+                      loc.titleQuestion,
                       style: theme.textTheme.bodyMedium!
                           .copyWith(fontWeight: FontWeight.w300),
                     ),
