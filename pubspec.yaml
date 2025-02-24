@@ -16,7 +16,8 @@ dependencies:
     sdk: flutter
   intl: any
 
-  
+  flutter_svg: ^2.0.17
+
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
@@ -34,6 +35,7 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
+    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

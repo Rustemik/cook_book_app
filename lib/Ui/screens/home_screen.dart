@@ -1,11 +1,12 @@
 import 'package:cook_book_app/Domain/interfaces/i_recipe_service.dart';
 import 'package:cook_book_app/Ui/components/name_title.dart';
+import 'package:cook_book_app/Ui/components/navigation_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Home extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   IRecipeService service;
-  Home({super.key, required this.service});
+  HomeScreen({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +64,9 @@ class Home extends StatelessWidget {
             ],
           );
         },
+      ),
+      bottomNavigationBar: NavigationBottom(
+        selectedIndex: 0,
       ),
     );
   }
