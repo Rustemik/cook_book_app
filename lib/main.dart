@@ -1,11 +1,9 @@
 import 'package:cook_book_app/DataAccess/interfaces/i_recipe_repository.dart';
 import 'package:cook_book_app/DataAccess/repos/recipe_repository.dart';
 import 'package:cook_book_app/Domain/interfaces/i_recipe_service.dart';
-import 'package:cook_book_app/Domain/service_locator.dart';
 import 'package:cook_book_app/Domain/services/recipe_service.dart';
-import 'package:cook_book_app/Ui/screens/home_screen.dart';
-import 'package:cook_book_app/Ui/screens/search_screen.dart';
 import 'package:cook_book_app/Ui/styles/app_themes.dart';
+import 'package:cook_book_app/main_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,10 +19,6 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     IRecipeRepository repo = RecipeRepository();
     IRecipeService service = RecipeService(repo);
-
-    var locator = ServiceLocator.getInstance();
-    locator.service = service;
-
     return MaterialApp(
       theme: AppThemes.light,
       darkTheme: AppThemes.dark,
@@ -39,7 +33,9 @@ class MainApp extends StatelessWidget {
         Locale('en'),
         Locale('ru'),
       ],
-      home: HomeScreen(service: service), //SearchScreen(),
+      home: MainWrapper(service: service),
+      //SearchScreen(),
+      //HomeScreen(service: service)
     );
   }
 }

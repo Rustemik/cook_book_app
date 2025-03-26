@@ -1,12 +1,11 @@
 import 'package:cook_book_app/Domain/interfaces/i_recipe_service.dart';
 import 'package:cook_book_app/Ui/components/name_title.dart';
-import 'package:cook_book_app/Ui/components/navigation_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatelessWidget {
   IRecipeService service;
-  HomeScreen({super.key, required this.service});
+  HomePage({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +14,10 @@ class HomeScreen extends StatelessWidget {
 
     var cards = service.getAll();
 
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(120),
-        child: AppBar(
-          //toolbarHeight: 70,
-          flexibleSpace: Padding(
+    return Column(
+      children: [
+        Container(
+          child: Padding(
             padding: const EdgeInsets.only(right: 25.0, left: 25.0, top: 100),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,28 +43,27 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      body: ListView.builder(
-        itemCount: cards.length,
-        itemBuilder: (context, index) {
-          var item = cards[index];
+        Expanded(
+          child: ListView.builder(
+            itemCount: cards.length,
+            itemBuilder: (context, index) {
+              var item = cards[index];
 
-          return Row(
-            children: [
-              Text(
-                item.name,
-              ),
-              SizedBox(width: 10),
-              Text(
-                item.ccal.toString(),
-              ),
-            ],
-          );
-        },
-      ),
-      bottomNavigationBar: NavigationBottom(
-        selectedIndex: 0,
-      ),
+              return Row(
+                children: [
+                  Text(
+                    item.name,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    item.ccal.toString(),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
