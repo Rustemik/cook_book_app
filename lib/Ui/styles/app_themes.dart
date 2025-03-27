@@ -11,6 +11,8 @@ class AppThemes {
               AppTypography.largeStyle.copyWith(color: AppColors.textLight),
           bodyMedium:
               AppTypography.mediumStyle.copyWith(color: AppColors.textLight),
+          labelMedium: AppTypography.secondaryMediumStyle
+              .copyWith(color: AppColors.labelLight),
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           elevation: 10,
@@ -31,6 +33,8 @@ class AppThemes {
             AppTypography.largeStyle.copyWith(color: AppColors.textDark),
         bodyMedium:
             AppTypography.mediumStyle.copyWith(color: AppColors.textDark),
+        labelMedium: AppTypography.secondaryMediumStyle
+            .copyWith(color: AppColors.labelDark),
       ),
     );
 
