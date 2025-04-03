@@ -53,11 +53,12 @@ class HomePage extends StatelessWidget {
                   mainAxisSpacing: 15,
                   childAspectRatio: 168 / 206,
                 ),
+                //clipBehavior: Clip.none,
                 itemCount: cards.length,
                 itemBuilder: (context, index) {
                   var item = cards[index];
 
-                  return RecipeCardVertical();
+                  return RecipeCardVertical(item);
                 },
               ),
             ),

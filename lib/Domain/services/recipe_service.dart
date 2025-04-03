@@ -11,6 +11,8 @@ class RecipeService implements IRecipeService {
   List<Recipe> getAll() {
     var items = repo.getAll();
 
-    return items.where((c) => !c.stopList).toList();
+    return items;
   }
 }
+
+//return items.where((c) => !c.stopList).toList();

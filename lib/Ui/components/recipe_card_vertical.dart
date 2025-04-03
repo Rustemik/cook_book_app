@@ -1,7 +1,10 @@
+import 'package:cook_book_app/Domain/models/recipe.dart';
 import 'package:flutter/material.dart';
 
 class RecipeCardVertical extends StatelessWidget {
-  const RecipeCardVertical({super.key});
+  Recipe model;
+
+  RecipeCardVertical(this.model, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +14,16 @@ class RecipeCardVertical extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
-          BoxShadow(
-            blurRadius: 5,
-            color: Colors.black.withOpacity(0.6),
-          ),
+          BoxShadow(blurRadius: 5, color: Colors.black.withOpacity(0.6)),
         ],
         image: DecorationImage(
-          image: AssetImage('assets/images/backCard.png'),
-          fit: BoxFit.fill,
+          image: NetworkImage(model.photoUrl != null &&
+                  model.photoUrl!.isNotEmpty
+              ? model.photoUrl!
+              : 'https://sc02.alicdn.com/kf/HTB1fdc.AfuSBuNkHFqDq6xfhVXaj/200204831/HTB1fdc.AfuSBuNkHFqDq6xfhVXaj.jpg'),
+          fit: BoxFit.cover,
+          colorFilter:
+              ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.darken),
         ),
       ),
       child: Padding(
@@ -34,7 +39,7 @@ class RecipeCardVertical extends StatelessWidget {
                 ),
                 SizedBox(width: 2),
                 Text(
-                  '4.5',
+                  model.rating.toString(),
                   style: theme.textTheme.labelMedium,
                 ),
                 Expanded(child: Container()),
@@ -48,11 +53,11 @@ class RecipeCardVertical extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Omelette pav',
+                  model.name,
                   style: theme.textTheme.labelMedium!
                       .copyWith(fontWeight: FontWeight.w600),
                 ),
-                SizedBox(height: 7),
+                SizedBox(height: 4),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -65,7 +70,7 @@ class RecipeCardVertical extends StatelessWidget {
                             color: theme.primaryColor,
                           ),
                           Text(
-                            '30 min',
+                            '${model.cookingTimeMinutes} min',
                             style: theme.textTheme.labelSmall,
                           ),
                         ],
@@ -80,7 +85,7 @@ class RecipeCardVertical extends StatelessWidget {
                             color: theme.primaryColor,
                           ),
                           Text(
-                            '120 pp',
+                            '${model.calories} kkal',
                             style: theme.textTheme.labelSmall,
                           ),
                         ],
