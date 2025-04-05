@@ -12,28 +12,20 @@ class AllRecipes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('Все рецепты'),
-        const SizedBox(height: 25),
-        Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 14,
-              mainAxisSpacing: 15,
-              childAspectRatio: 168 / 206,
-            ),
-            itemCount: cards.length,
-            itemBuilder: (context, index) {
-              var item = cards[index];
-
-              return RecipeCardVertical(item);
-            },
-          ),
-        ),
-      ],
+    return SliverGrid(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          var item = cards[index];
+          return RecipeCardVertical(item);
+        },
+        childCount: cards.length,
+      ),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 15.0,
+        crossAxisSpacing: 14.0,
+        childAspectRatio: 168 / 206,
+      ),
     );
   }
 }
