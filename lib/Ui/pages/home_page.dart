@@ -1,6 +1,7 @@
 import 'package:cook_book_app/Domain/interfaces/i_recipe_service.dart';
-import 'package:cook_book_app/Ui/components/name_title.dart';
-import 'package:cook_book_app/Ui/components/recipe_card_vertical.dart';
+import 'package:cook_book_app/Ui/components/all_recipes.dart';
+import 'package:cook_book_app/Ui/components/main_app_bar.dart';
+import 'package:cook_book_app/Ui/components/top_recipes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -18,48 +19,17 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(25),
-        child: Column(
-          children: [
-            Container(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const NameTitle('Rustem'),
-                      Text(
-                        loc.titleQuestion,
-                        style: theme.textTheme.bodyMedium!
-                            .copyWith(fontWeight: FontWeight.w300),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 47,
-                    width: 47,
-                    color: theme.primaryColor,
-                  ),
+        child: CustomScrollView(
+          slivers: [
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  MainAppBar(loc: loc, theme: theme),
+                  const SizedBox(height: 25),
+                  TopRecipes(cards: cards),
+                  const SizedBox(height: 25),
+                  SizedBox(height: 400, child: AllRecipes(cards: cards)),
                 ],
-              ),
-            ),
-            SizedBox(height: 25),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 14,
-                  mainAxisSpacing: 15,
-                  childAspectRatio: 168 / 206,
-                ),
-                //clipBehavior: Clip.none,
-                itemCount: cards.length,
-                itemBuilder: (context, index) {
-                  var item = cards[index];
-
-                  return RecipeCardVertical(item);
-                },
               ),
             ),
           ],
@@ -68,3 +38,35 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+// Text('Popular Recipes'),
+            // SizedBox(height: 25),
+            // SizedBox(
+            //   height: 168,
+            //   child: ListView.separated(
+            //       separatorBuilder: (context, index) => SizedBox(
+            //             width: 30,
+            //           ),
+            //       scrollDirection: Axis.horizontal,
+            //       itemCount: cards.length,
+            //       itemBuilder: (context, i) {
+            //         var item = cards[i];
+
+            //         return AspectRatio(
+            //           aspectRatio: 256 / 167,
+            //           child: RecipeCardVertical(item),
+            //         );
+            //       }),
+            // ),
+            // SizedBox(height: 25),
+
+
+            // child: Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     MainAppBar(loc: loc, theme: theme),
+        //     const SizedBox(height: 25),
+        //     TopRecipes(cards: cards),
+        //     const SizedBox(height: 25),
+        //     Expanded(child: AllRecipes(cards: cards)),
+        //   ],
