@@ -26,15 +26,15 @@ class HomePage extends StatelessWidget {
               collapsedHeight: 70,
               flexibleSpace: MainAppBar(loc: loc, theme: theme),
             ),
-            SliverAppBar(
-              pinned: true,
-              collapsedHeight: 70,
-              flexibleSpace: Container(
-                height: 100,
-                width: double.infinity,
-                color: Colors.green,
-              ),
-            ),
+            // SliverAppBar(
+            //   pinned: true,
+            //   collapsedHeight: 70,
+            //   flexibleSpace: Container(
+            //     height: 100,
+            //     width: double.infinity,
+            //     color: Colors.green,
+            //   ),
+            // ),
             SliverList(
               delegate: SliverChildListDelegate(
                 [
