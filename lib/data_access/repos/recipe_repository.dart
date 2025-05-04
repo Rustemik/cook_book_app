@@ -1,10 +1,14 @@
-import 'package:cook_book_app/DataAccess/interfaces/i_recipe_repository.dart';
-import 'package:cook_book_app/Domain/models/recipe.dart';
+import 'package:cook_book_app/data_access/interfaces/i_recipe_repository.dart';
+import 'package:cook_book_app/domain/models/recipe.dart';
 
 class RecipeRepository implements IRecipeRepository {
   @override
   List<Recipe> getAll() {
     //очень сложный метод доступа к базе данных
+
+    //выкинуть ошибку
+    //throw Exception('EEEEEE');
+
     return _db;
   }
 }

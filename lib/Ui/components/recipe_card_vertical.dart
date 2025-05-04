@@ -1,4 +1,4 @@
-import 'package:cook_book_app/Domain/models/recipe.dart';
+import 'package:cook_book_app/domain/models/recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -145,8 +145,8 @@ Widget _chefBreak() {
       Center(
         child: Lottie.asset(
           'assets/animations/chef_break.json',
-          width: 120,
-          height: 120,
+          width: 220,
+          height: 220,
         ),
       ),
     ],

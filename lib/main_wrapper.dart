@@ -1,19 +1,16 @@
-import 'package:cook_book_app/Domain/interfaces/i_recipe_service.dart';
-import 'package:cook_book_app/Ui/pages/favourite_page.dart';
-import 'package:cook_book_app/Ui/pages/home_page.dart';
-import 'package:cook_book_app/Ui/pages/search_page.dart';
-import 'package:cook_book_app/Ui/pages/settings_page.dart';
+import 'package:cook_book_app/ui/old_structure_pages/favourite_page.dart';
+import 'package:cook_book_app/ui/home/page/home_page.dart';
+import 'package:cook_book_app/ui/old_structure_pages/search_page.dart';
+import 'package:cook_book_app/ui/old_structure_pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class MainWrapper extends StatefulWidget {
-  IRecipeService service;
-
-  MainWrapper({super.key, required this.service});
+  MainWrapper({super.key});
 
   @override
   State<MainWrapper> createState() => _MainWrapperState(
         pages: [
-          HomePage(service: service),
+          HomePage(),
           SearchPage(),
           FavouritePage(),
           SettingsPage(),

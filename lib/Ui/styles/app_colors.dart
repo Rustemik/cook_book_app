@@ -9,6 +9,9 @@ class AppColors {
   static Color selectedLight = primaryLight;
   static Color unselectedLight = secondaryLight;
 
+  static Color selectedToogleLight = Color(0xffF8F9FA);
+  static Color unselectedToogleLight = blackLight;
+
   static Color primaryDark = Color(0xffFFB337);
   static Color textDark = Color(0xffF8F9FA);
   static Color labelDark = Color(0xffF8F9FA);

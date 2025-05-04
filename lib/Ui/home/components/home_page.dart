@@ -1,8 +1,9 @@
-import 'package:cook_book_app/Domain/interfaces/i_recipe_service.dart';
-import 'package:cook_book_app/Ui/components/all_recipes.dart';
-import 'package:cook_book_app/Ui/components/main_app_bar.dart';
-import 'package:cook_book_app/Ui/components/recipe_card_vertical.dart';
-import 'package:cook_book_app/Ui/components/top_recipes.dart';
+import 'package:cook_book_app/domain/interfaces/i_recipe_service.dart';
+import 'package:cook_book_app/ui/components/all_recipes.dart';
+import 'package:cook_book_app/ui/home/components/filter.dart';
+import 'package:cook_book_app/ui/home/components/main_app_bar.dart';
+import 'package:cook_book_app/ui/components/recipe_card_vertical.dart';
+import 'package:cook_book_app/ui/components/top_recipes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -26,18 +27,15 @@ class HomePage extends StatelessWidget {
               collapsedHeight: 70,
               flexibleSpace: MainAppBar(loc: loc, theme: theme),
             ),
-            // SliverAppBar(
-            //   pinned: true,
-            //   collapsedHeight: 70,
-            //   flexibleSpace: Container(
-            //     height: 100,
-            //     width: double.infinity,
-            //     color: Colors.green,
-            //   ),
-            // ),
+            SliverAppBar(
+              pinned: true,
+              collapsedHeight: 102,
+              flexibleSpace: Filter(),
+            ),
             SliverList(
               delegate: SliverChildListDelegate(
                 [
+                  SizedBox(height: 25),
                   TopRecipes(cards: cards),
                   SizedBox(height: 25),
                   Text('Все рецепты'),
@@ -52,6 +50,7 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 
 // Text('Popular Recipes'),
 // SizedBox(height: 25),

@@ -1,5 +1,5 @@
-import 'package:cook_book_app/Domain/models/recipe.dart';
-import 'package:cook_book_app/Ui/components/recipe_card_horizontal.dart';
+import 'package:cook_book_app/domain/models/recipe.dart';
+import 'package:cook_book_app/ui/components/recipe_card_horizontal.dart';
 import 'package:flutter/material.dart';
 
 class TopRecipes extends StatelessWidget {
