@@ -1,6 +1,10 @@
-import 'package:cook_book_app/home.dart';
-import 'package:cook_book_app/styles/app_themes.dart';
+import 'package:cook_book_app/data_access/repos/recipe_repository.dart';
+import 'package:cook_book_app/ui/styles/app_themes.dart';
+import 'package:cook_book_app/main_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,7 +19,22 @@ class MainApp extends StatelessWidget {
       theme: AppThemes.light,
       darkTheme: AppThemes.dark,
       themeMode: ThemeMode.system,
-      home: Home(),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ru'),
+      ],
+      home: RepositoryProvider(
+        create: (context) => RecipeRepository(),
+        child: MainWrapper(),
+      ),
+      //SearchScreen(),
+      //HomeScreen(service: service)
     );
   }
 }
